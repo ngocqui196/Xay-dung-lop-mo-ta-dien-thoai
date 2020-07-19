@@ -8,27 +8,27 @@ function Battery () {
 
 }
 function Phone1() {
-    this.getArrIB = function () {
-        return this.arrIB;
+    this.setMessage = function (message) {
+        this.message = message
     };
-    this.setArrIB = function (arrIB) {
-        this.arrIB = arrIB;
+    this.getMessage = function () {
+        return this.message;
     };
-    this.getarrOB = function () {
-        return this.arrOB;
-    };
-    this.setArrOB = function (arrOB) {
-        this.arrOB = arrOB;
-    };
-    this.turnOnMobile = function () {
-        this.status = true;
-    };
-    this.turnOffMobile = function () {
-        this.status = false;
-    };
-    this.checkScreen = function () {
-        if (this.status === false) {
-
-        }
+    this.sendMessage = function (message,mobile) {
+        mobile.setMessage(message);
     }
+}
+
+let iphone = new Phone1();
+let nokia = new Phone1();
+
+function sendMessage1() {
+    iphone.sendMessage(document.getElementById("screenphone1").value,nokia)
+    document.getElementById("2").innerHTML = nokia.getMessage();
+    document.getElementById("screenphone1").value = "";
+}
+function sendMessage2() {
+    nokia.sendMessage(document.getElementById("2").value,iphone);
+    document.getElementById("screenphone1").innerHTML = iphone.getMessage();
+    document.getElementById("2").value = "";
 }
