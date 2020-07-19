@@ -8,15 +8,17 @@ function Battery () {
 
 }
 function Phone1() {
-    this.setMessage = function (message) {
-        this.message = message
-    };
-    this.getMessage = function () {
-        return this.message;
-    };
-    this.sendMessage = function (message,mobile) {
-        mobile.setMessage(message);
+    this.sendMessage = function (sendMessage,mobile) {
+        mobile.setMessage(sendMessage);
     }
+    this.getMessage = function () {
+    return this.message;
+    };
+    this.setMessage = function (setMessage) {
+        this.message = setMessage;
+    };
+
+
 }
 
 let iphone = new Phone1();
@@ -24,11 +26,14 @@ let nokia = new Phone1();
 
 function sendMessage1() {
     iphone.sendMessage(document.getElementById("screenphone1").value,nokia)
-    document.getElementById("2").innerHTML = nokia.getMessage();
-    document.getElementById("screenphone1").value = "";
+    document.getElementById("2").value = nokia.getMessage();
+    iphone.setMessage(document.getElementById("screenphone1").value = "");
+
 }
+
 function sendMessage2() {
     nokia.sendMessage(document.getElementById("2").value,iphone);
-    document.getElementById("screenphone1").innerHTML = iphone.getMessage();
-    document.getElementById("2").value = "";
+    document.getElementById("screenphone1").value = iphone.getMessage();
+    nokia.setMessage(document.getElementById("2").value = "");
+
 }
