@@ -8,6 +8,12 @@ function Battery () {
 
 }
 function Phone1() {
+    this.setNameMobile = function (name) {
+        this.name = name;
+    }
+    this.getNameMobile = function () {
+        return this.name;
+    }
     this.sendMessage = function (sendMessage,mobile) {
         mobile.setMessage(sendMessage);
     }
@@ -23,17 +29,18 @@ function Phone1() {
 
 let iphone = new Phone1();
 let nokia = new Phone1();
-
+    iphone.setNameMobile("IPHONE");
+    nokia.setNameMobile("NOKIA")
 function sendMessage1() {
     iphone.sendMessage(document.getElementById("screenphone1").value,nokia)
-    document.getElementById("2").value = nokia.getMessage();
+    document.getElementById("2").value = "You have message from " + iphone.getNameMobile() + ": " + nokia.getMessage();
     iphone.setMessage(document.getElementById("screenphone1").value = "");
 
 }
 
 function sendMessage2() {
     nokia.sendMessage(document.getElementById("2").value,iphone);
-    document.getElementById("screenphone1").value = iphone.getMessage();
+    document.getElementById("screenphone1").value = "You have message from " + nokia.getNameMobile() + ": " + iphone.getMessage();
     nokia.setMessage(document.getElementById("2").value = "");
 
 }
